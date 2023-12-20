@@ -1,3 +1,6 @@
-# Ignore
-env
-.env
+# Ignore everything
+*
+# But not these files
+!.gitignore
+!README.md
+!tele_scrape.py
