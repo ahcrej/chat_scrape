@@ -1,6 +1,7 @@
 # source env/bin/activate
 from pyrogram import Client
 from dotenv import load_dotenv
+import tgcrypto
 import os
 
 load_dotenv()
@@ -16,15 +17,18 @@ chat_id = "nytimes"
 
 lst = []
 
+filter = input("Enter keyword: ")
+
 async def main():
     async with app:
         async for message in app.get_chat_history(chat_id):
             msg = str(message.text)
-            if "Biden" in msg:
+            if filter in msg:
                 if msg not in lst:
                     lst.append(msg)
 
 app.run(main())
+lst.reverse()
 
 with app:
     for i in lst:
